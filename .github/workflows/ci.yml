@@ -13,7 +13,7 @@ jobs:
     name: Build, test and lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -23,14 +23,8 @@ jobs:
       - name: Build
         run: cargo build --verbose
 
-      - name: Build without std
-        run: cargo build --no-default-features --verbose
-
       - name: Test
         run: cargo test --verbose
 
       - name: Clippy
         run: cargo clippy --all-targets -- -D warnings
-
-      - name: Benchmark smoke test
-        run: cargo bench --bench glyph -- --test

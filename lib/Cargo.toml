@@ -1,0 +1,14 @@
+[package]
+name = "marspeak"
+version = "0.2.0"
+edition = "2024"
+description = "中文火星文转换库：可逆的单字符字形替换"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Natane0808/marspeak"
+homepage = "https://github.com/Natane0808/marspeak"
+documentation = "https://docs.rs/marspeak"
+keywords = ["chinese", "text", "converter", "unicode", "martian"]
+categories = ["text-processing", "internationalization"]
+
+[dependencies]
