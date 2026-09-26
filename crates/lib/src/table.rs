@@ -3,7 +3,9 @@ use std::{collections::HashMap, sync::OnceLock};
 use crate::error::TableError;
 
 /// 内置映射表在编译期就嵌进二进制，运行时零 I/O。
-/// 路径相对于本文件（`lib/src/table.rs` → `lib/data/marspeak.tsv`）。
+/// 路径相对于本文件（`crates/lib/src/table.rs` → `crates/lib/data/marspeak.tsv`）。
+/// 注意：`include_str!` 解析的是**文件系统相对路径**，跟 workspace 怎么分组无关，
+/// 所以挪动 crate 目录时只要 data/ 跟着走，这一行就不用改。
 const BUILTIN_TSV: &str = include_str!("../data/marspeak.tsv");
 /// 惰性解析：没用到 Table 就不付解析成本。OnceLock 保证只解析一次。
 static BUILTIN: OnceLock<Table> = OnceLock::new();

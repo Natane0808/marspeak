@@ -12,8 +12,8 @@
 
 | crate | 说明 | 依赖 |
 |---|---|---|
-| [`marspeak`](lib/README.md) | 转换库 | **零依赖** |
-| [`marspeak-cli`](cli/README.md) | 命令行工具 | `marspeak` + `clap` |
+| [`marspeak`](crates/lib/README.md) | 转换库 | **零依赖** |
+| [`marspeak-cli`](crates/cli/README.md) | 命令行工具 | `marspeak` + `clap` |
 
 
 ## 当库用
@@ -58,15 +58,17 @@ echo "我爱你" | marspeak-cli encode           # 也支持管道
 - **强度是概率，不是"前 N 个字"** —— 具体哪些字被换由哈希决定。表里没有的字符（ASCII、emoji、空白、标点）永远原样通过。
 - **`decode` 是无条件的** —— 它会还原输入里所有能反查的字符，跟 encode 时用了多少 intensity 无关。拿一段别人写的火星文来 decode 同样会生效，这是有意的设计后果。
 
-完整说明见 [`lib/README.md`](lib/README.md)。
+完整说明见 [`crates/lib/README.md`](crates/lib/README.md)。
 
 ## 目录结构
 
 ```
 marspeak/
-├── lib/     marspeak —— 转换库
-│   └── data/marspeak.tsv     内置映射表（编译期嵌入）
-└── cli/     marspeak-cli —— 命令行工具
+├── Cargo.toml             虚拟清单，只声明 workspace
+└── crates/
+    ├── lib/    marspeak —— 转换库
+    │   └── data/marspeak.tsv      内置映射表（编译期嵌入）
+    └── cli/    marspeak-cli —— 命令行工具
 ```
 
 ## 开发
